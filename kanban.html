@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="https://unpkg.com/vue@2.6.14/dist/vue.min.js">
+  <link rel="stylesheet" href="https://unpkg.com/vue2-dragula@2.5.1/dist/vue-dragula.min.js">
+</head>
+<body>
+
+<div id="app">
+  <div class="board">
+    <div class="column" v-for="(column, columnIndex) in columns" :key="columnIndex">
+      <h2>{{ column.title }}</h2>
+      <div class="task-list" v-dragula="column.id">
+        <div class="task" v-for="(task, taskIndex) in column.tasks" :key="taskIndex">
+          {{ task.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/vue2-dragula@2.5.1/dist/vue-dragula.min.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      columns: [
+        {
+          id: 'todo',
+          title: 'To Do',
+          tasks: [
+            { title: 'Task 1' },
+            { title: 'Task 2' },
+          ],
+        },
+        {
+          id: 'inProgress',
+          title: 'In Progress',
+          tasks: [
+            { title: 'Task 3' },
+            { title: 'Task 4' },
+          ],
+        },
+        {
+          id: 'done',
+          title: 'Done',
+          tasks: [
+            { title: 'Task 5' },
+            { title: 'Task 6' },
+          ],
+        },
+      ],
+    },
+    directives: {
+      dragula: VueDragula.directive,
+    },
+  });
+</script>
+
+</body>
+</html>
