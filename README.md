@@ -20,6 +20,11 @@ Follow these steps to run the Kanban board locally:
    ```bash
    git clone <repository_url>
 
+### How to Run
+   ```
+   node app.js
+   ```
+
 ## Built With
 
 Vue.js - JavaScript framework for building user interfaces.
