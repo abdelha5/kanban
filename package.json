@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "lint": "npm run lint:ejs",    
+        "lint:ejs": "find src/templates -type f -iname 'index.ejs' -exec bash -c \"./node_modules/.bin/ejslint '{}'\" \\;"
+    },
+    "dependencies": {
+        "eslint": "^8.56.0"
+    }
+}

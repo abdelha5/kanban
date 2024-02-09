@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    div {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 30%;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    h2 {
+      color: #333;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      margin: 10px 0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    form {
+      display: inline;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kanban Board</h1>
+  
+  <div>
+    <h2>Todo</h2>
+    <ul>
+      <% tasks.todo.forEach(task => { %>
+        <li>
+          <%= task %>
+          <form action="/moveTask" method="POST">
+            <input type="hidden" name="task" value="<%= task %>"> 
+            <input type="hidden" name="sourceList" value="todo">
+            <input type="hidden" name="destinationList" value="inProgress">
+            <button type="submit">Move to In Progress</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>In Progress</h2>
+    <ul>
+      <% tasks.inProgress.forEach(task => { %>
+        <li>
+          <%= task %>
+          <form action="/moveTask" method="POST">
+            <input type="hidden" name="task" value="<%= task %>">
+            <input type="hidden" name="sourceList" value="inProgress">
+            <input type="hidden" name="destinationList" value="done">
+            <button type="submit">Move to Done</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Done</h2>
+    <ul>
+      <% tasks.done.forEach(task => { %>
+        <li><%= task %></li>
