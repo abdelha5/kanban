@@ -17,12 +17,13 @@ Follow these steps to run the Kanban board locally:
 
 1. Clone the repository:
 
-   ```bash
+   ```
    git clone <repository_url>
+   ```
 
 ### How to Run
    ```
-    node app.js
+   node app.js
    ```
 
 ## Built With
