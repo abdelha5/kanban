@@ -2,6 +2,8 @@
 
 This project is a simple Kanban board implemented using Vue.js and vue-dragula for drag-and-drop functionality. The board consists of columns such as "To Do," "In Progress," and "Done," allowing you to manage tasks efficiently.
 
+![kanban](kanban.jpeg)
+
 ## Getting Started
 
 Follow these steps to run the Kanban board locally:
