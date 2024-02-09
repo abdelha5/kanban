@@ -22,7 +22,7 @@ Follow these steps to run the Kanban board locally:
 
 ### How to Run
    ```
-   node app.js
+    node app.js
    ```
 
 ## Built With
